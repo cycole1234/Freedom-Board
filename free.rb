@@ -7,15 +7,14 @@ end
 post '/' do
 	@message = params['txt1']
 	@user = params['txt2']
-	
-	UserPost = Struct.new :message
+	@time = Time.now.strftime("%d/%m/%Y %H:%M:%S")
 	
 	@store = YAML::Store.new 'message.yml'
 	@store.transaction do
 		if @user == ''
-			@store['Anonymous'] = @message
+			@store[@time] = [@message, 'Anonymous']
 		else
-			@store[@user] = @message
+			@store[@time] = [@message, @user]
 		end
 	end
 	erb :index

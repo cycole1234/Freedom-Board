@@ -11,27 +11,43 @@
   </head>
   <body class='container'>
 	<div class = 'row text-center'>
-		<h1>Freedom board</h1>
+		<h1 class = "freedom" >Freedom Board</h1>
 		<div class = "col-sm-8">
+		
 			<form action="/" method="POST">
 				<div class = "form-group">
 					<textarea class = "upper-textarea" rows="3" name = "txt1" placeholder="Please type message"></textarea>
 				</div>
 				<div class = "form-group">
 					<textarea class = "lower-textarea" rows="1" name = "txt2" placeholder = "Anonymous"></textarea>
-					<button class= "btn btn-primary" type = "submit" onclick="myFunction()>Ipahayag!</button>
+					<button class= "btn btn-primary" type = "submit">Ipahayag!</button>
 				</div>
-				
-				<script>
-				</script>
 			</form>
+			
 			<div class= "panel panel-primary">
 				<div class = "form-group">
-					<textarea class = "form-control" rows="1" >Hanapin ang post</textarea>
+					<textarea class = "form-control" rows="1" placeholder="Hanapin ang post"></textarea>
 					<button class= "btn btn-primary">Hanapin</button>
 				</div>
 				<div class = "con">
-				<div class="panel-body">Panel Body</div>
+				<section>
+				
+					<%if File.exist? "message.yml"%>
+						<% yaml_file = YAML.load(File.read("message.yml")) %>
+						<div class="panel-body">
+							<% yaml_file.reverse_each do |key , value| %>
+							
+								
+								<div class = "within">
+									<div class = "pull-left"><label class = "lbl"><%= value[1] %></label></div>
+									<div class = "pull-right"><label class = "lbl"> <%= key%></label></div>
+									<br><p><%= value[0] %></p>
+								</div>
+							<%end%>
+						</div>
+					<%end%>
+				</section>
+				
 			</div>
 			</div>
 		</div>
