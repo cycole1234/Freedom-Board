@@ -1,0 +1,19 @@
+.upper-textarea{
+	width: 500px;
+}
+.lower-textarea{
+	width: 400px;
+}
+		
+.panel-body{
+	border-style: solid;
+	border-width: 1px;
+	height: 400px;
+	width: 1220px;
+			
+}
+		
+.con{
+	padding-bottom: 10px;
+	padding-top: 20px;
+}
